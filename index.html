@@ -3,27 +3,60 @@
 
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale = 1.0, maximum-scale=1.0, user-scalable=no">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Black+Han+Sans|Chakra+Petch" rel="stylesheet">
     <link href="assets/css/style.css" rel="stylesheet">
     <script src="assets/js/script.js" defer></script>
     <title>Basic HTML5 built</title>
 </head>
 
 <body>
-    <section>
-        <article>
-            <h1>
-                <p>
-
-                </p>
-            </h1>
-        </article>
-    </section>
-
+    <header>
+        <a href="index.html" id="logo"><span>Logo</span></a>
+        <a href="#" id="menu-btn"><span>MENU</span></a>
+        <nav>
+            <a href="#" id="menu-btn-close"><img src="assets/Images/close.svg"></a>
+            <div id="menu-header">Menu</div>
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="page-sub.html">In Orbit</a></li>
+                <li><a href="page-sub.html">The Moon</a></li>
+                <li><a href="page-sub.html">Mars</a></li>
+                <li><a href="page-sub.html">Saturn</a></li>
+            </ul>
+        </nav>
+    </header>
+    <main>
+        <div class="grid-container">
+            <a href="page-sub.html" class="grid-item name-hero background-image-cover dymo-header">
+                <h1>Space</h1>
+            </a>
+            <a href="page-sub.html" class="grid-item name-moon background-image-cover center-header dymo-header">
+                <h2>Moon</h2>
+            </a>
+            <a href="page-sub.html" class="grid-item name-orbit background-image-cover center-header dymo-header">
+                <h2>In&nbsp;Orbit</h2>
+            </a>
+            <a href="page-sub.html" class="grid-item name-mars background-image-cover center-header dymo-header">
+                <h2>Mars</h2>
+            </a>
+            <a href="page-sub.html" class="grid-item name-saturn background-image-cover center-header dymo-header">
+                <h2>Saturn</h2>
+            </a>
+        </div>
+    </main>
     <footer>
-        <p>Author: Kristoffer Egholm Wendelboe</p>
-        <p><a href="mailto:mailto@example.com">mailto@example.com</a></p>
+        <div class="footer-layout-div">
+            <h4>Copyrights:</h4>
+            <p>Images from NASA &amp; Pexels.com</p>
+            <p>HTML/CSS by Kre</p>
+        </div>
+        <div class="footer-layout-div">
+            <h4>About the author:</h4>
+            <p>Kristoffer Egholm Wendelboe</p>
+            <p><a href="https://github.com/kreucn" target="_blank">Kreucn on GitHub</a></p>
+        </div>
     </footer>
 </body>
 
