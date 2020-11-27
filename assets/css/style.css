@@ -2,8 +2,476 @@
 	CSS by Kristoffer Egholm Wendelboe 
 	UCN MMD 2020
 */
-@import url('https://fonts.googleapis.com/css2?family=Fjord+One&display=swap');
 
+/* mobile first, so all sizes/distances are set relative to the screen size (vw or vh) */
+
+/* Set box sizing model to avoid trouble with paddings and border that extende on the size of an element */
+* {
+    box-sizing: border-box;
+}
+
+/* basic settings for body - font, reset margin/padding. Set font size to a vw (view width) that relates to the width of the screen */
 body {
-	font-family: 'Fjord One', serif;
+    font-family: sans-serif;
+    margin: 0;
+    padding: 0;
+    font-size: 4vw;
+}
+
+/* reset the headers used in the html, change their font  */
+h1,
+h2,
+h3 {
+    margin: 0;
+    font-family: 'Chakra Petch', sans-serif;
+}
+
+/* avoid that any image in the content (main) spill outside of their parent element  */
+main img {
+    max-width: 100%;
+}
+
+/* place the header at the top of the screen, set width to full screen width (100vw)
+z-index: 1 makes sure that header is draw on top (is overlaying) of other content */
+header {
+    position: fixed;
+    top: 0;
+    width: 100vw;
+    z-index: 1;
+}
+
+/* logo is set to position relative to enable the span inside to place itself in relation to the #logo element */
+#logo {
+    background-color: #2ecc71;
+    color: #fff;
+    text-decoration: none;
+    font-family: 'Black Han Sans', sans-serif;
+    display: inline-block;
+    width: 15vw;
+    height: 15vw;
+    position: relative;
+    transform: rotate(270deg);
+}
+
+/* place logo type inside the parent element (#logo) */
+#logo span {
+    position: absolute;
+    bottom: -.2vw;
+    left: 0;
+    opacity: .5;
+}
+
+/* reuasable standard class for any element with a background image  */
+.background-image-cover {
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-size: cover;
+}
+
+/* set position of headline in the hero a-tag element */
+.name-hero h1 {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translateX(-50%);
+}
+
+/* set position of headline in any .center-header element */
+.center-header h2 {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+}
+
+/* change the look of h1 and h2 */
+.dymo-header h1,
+.dymo-header h2 {
+    padding: 2vw 6vw;
+    color: rgba(255, 255, 255, .8);
+    background-color: rgba(0, 0, 0, .5);
+    text-transform: uppercase;
+}
+
+/* set basic options for the a-tag elements  */
+.grid-item {
+    position: relative;
+	display: block;
+    height: 50vh;
+}
+
+/* set unique image and height for the hero element */
+.name-hero { 
+	background-image: url(../images/2.jpg);
+    height: 100vh;
+}
+
+/* set unique backgrounds for the different elements */
+.name-orbit { background-image: url(../images/3.jpg); }
+.name-moon { background-image: url(../images/1.jpg); }
+.name-mars { background-image: url(../images/4.jpg); }
+.name-saturn { background-image: url(../images/5.jpg); }
+
+footer {
+    background-color: #e74c3c;
+    color: #fff;
+    padding: 4vw;
+}
+
+footer a {
+    color: #fff;
+}
+
+footer h4,
+footer p {
+    margin: 0;
+}
+
+/* set a margin above the 2nd .footer-layout-div element in the footer */
+.footer-layout-div + .footer-layout-div {
+    margin-top: 1vw;
+}
+
+/* 
+	navigation for mobile
+	remember to reset all this for desktop
+*/
+
+/* navigation same size as viewport, move it to the left outside of screen */
+nav {
+    position: fixed;
+    top: 0;
+    right: 120vw;
+    transform: translateX(0);
+    width: 100vw;
+    height: 100vh;
+    background-color: #e74c3c;
+    transition: all .3s ease-out;
+    opacity: .1;
+    padding-top: 15vw;
+}
+
+/* let active navigation move back into screen */
+.nav-active nav {
+    transform: translateX(120%);
+    opacity: 1;
+}
+
+/* hide menu button when navigation is active */
+.nav-active #menu-btn {
+    opacity: 0;
+}
+
+/* menu buttons */
+#menu-btn {
+    transition: opacity .3s ease-out;
+}
+
+/* set common options for the open and close butttons to the menu */
+#menu-btn,
+#menu-btn-close {
+    position: fixed;
+    right: 0;
+    top: 0;
+    width: 15vw;
+    height: 15vw;
+    background-color: #e67e22;
+    color: #fff;
+    display: inline-block;
+}
+
+/* style the content in the menu button */
+#menu-btn span {
+    display: inline-block;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 3vw;
+}
+
+/* style the content of the menu close button */
+#menu-btn-close img {
+    width: 6vw;
+    height: 6vw;
+    display: inline-block;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+}
+
+/* pretty menu header for mobile nav */
+#menu-header {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 85vw;
+    height: 15vw;
+    background-color: #f39c12;
+    line-height: 15vw;
+    padding-left: 5vw;
+    font-size: 5vw;
+    text-transform: uppercase;
+    color: #fff;
+}
+
+/* style for nav items */
+nav ul {
+    margin: 0;
+    padding: 0;
+}
+
+nav li {
+    display: block;
+    list-style-type: none;
+    border-bottom: 2px solid #f39c12;
+}
+
+nav li a {
+    display: block;
+    text-decoration: none;
+    color: #fff;
+    padding: 5vw;
+
+}
+
+/* some style for the sub-page */
+.sub-page main {
+    padding: 20vw 2vw 5vw 2vw;
+}
+
+.sub-page main h1 {
+    margin: 2vw 0;
+}
+
+/* css grid naming */
+.name-hero { grid-area: hero; }
+.name-orbit { grid-area: orbit; }
+.name-moon { grid-area: moon; }
+.name-mars { grid-area: mars; }
+.name-saturn { grid-area: saturn; }
+
+/* switch positions in grid */
+.grid-container {
+    display: grid;
+    grid-template-areas:
+        'hero'
+        'orbit'
+        'moon'
+        'mars'
+        'saturn';
+}
+
+/* style for tablet (portrait) and upwards */
+@media screen and (min-width: 768px) {
+    /* hide menu button on all other devices than mobile */
+    #menu-btn { display: none; }
+
+    /* make sure text-sizes don't explode on larger screens */
+    body { font-size: 14px; }
+
+    /* make exceptions for headers */
+    h1 { font-size: 4vw; }
+    h2 { font-size: 3vw; }
+
+    /* logo gets a fixed size from here on */
+    #logo {
+        width: 150px;
+        height: 150px;
+        font-size: 37.5px;
+    }
+
+    #logo span { bottom: -2px; }
+
+    /* hero header moved to exact center */
+    .name-hero h1 { transform: translate(-50%, -50%); }
+
+	/* new heights for my named grid items */
+    .name-hero { height: 50vh; }
+    .name-orbit { height: 50vh; }
+    .name-moon { height: 25vh; }
+    .name-mars { height: 50vh; }
+    .name-saturn { height: 25vh; }
+
+    /* switch positions in grid */
+    .grid-container {
+        display: grid;
+        grid-template-areas:
+            'hero hero hero'
+            'orbit moon mars'
+            'orbit saturn mars';
+    }
+
+	/*
+		Remove margin top for every .footer-layout-div 
+		who is preceeded by a .footer-layout-div
+	*/
+    .footer-layout-div+.footer-layout-div {
+        margin-top: 0;
+        padding-left: 4vw;
+    }
+
+	/* change width of footer divs */
+    .footer-layout-div { width: 50%; }
+
+	/* make the two footer divs into a row */
+    footer {
+        display: flex;
+    }
+
+    /* some style for the sub-page */
+    .sub-page main {
+        padding: 200px 4vw 5vw 4vw;
+    }
+
+	/* 
+		remove margin above first p element in text-block 
+		since it's going into columns now
+	*/
+    .text-block p:first-child {
+        margin-top: 0;
+    }
+
+	/* make the h1 look prettier */
+    .sub-page main h1 {
+        margin: 2vw 0;
+    }
+
+    /* navigation for tablet and upwards */
+    nav {
+        position: fixed;
+        top: 0;
+        left: 150px;
+        transform: translateX(0);
+        width: calc(100vw - 150px);
+        height: auto;
+        background-color: #e74c3c;
+        transition: none;
+        opacity: 1;
+        padding-top: 0;
+    }
+
+	/* set navigation to be displayed as I want on non-mobile */
+    nav ul {
+        margin: 0;
+        padding: 0;
+    }
+
+    nav li {
+        display: inline-block;
+        list-style-type: none;
+        border-bottom: none;
+    }
+
+    nav li a {
+        display: inline-block;
+        text-decoration: none;
+        color: #fff;
+        padding: 30px;
+
+    }
+    /* add some margin to top of main to make room for nav bar */
+    main {
+        margin-top: 70px;
+    }
+
+	/* hover effect on nav item */
+    nav li a:hover {
+        background-color: rgba(0, 0, 0, .1);
+    }
+
+	/* hide mobile menu-stuff on non-mobile */
+    #menu-btn-close,
+    #menu-header {
+        display: none;
+    }
+
+	/* break text up into 2 columns */
+    .text-block {
+        column-count: 2;
+    }
+}
+
+/* style for tablet (landscape) and upwards */
+@media screen and (min-width: 1024px) {
+    /* new height for all grid-items */
+    .grid-item {
+        height: 25vh;
+    }
+
+    /* new height for the hero grid-item */
+    .grid-item.name-hero {
+        height: 75vh;
+    }
+
+    /* switch positions in grid */
+    .grid-container {
+        display: grid;
+        grid-template-areas:
+            'hero hero hero hero'
+            'orbit moon mars saturn';
+    }
+
+    /* some resizing of the grid h2s */
+    .grid-item h2 {
+        font-size: 2vw;
+        padding: 2vw 4vw;
+    }
+
+    /* some style for the sub-page */
+    .text-block {
+        column-count: 3;
+    }
+}
+
+/* styles for medium sized screens and upwards */
+@media screen and (min-width: 1200px) {
+    /* new height for all grid-items */
+    .grid-item {
+        height: 33.3333vh;
+    }
+
+    /* new height for the hero grid-item */
+    .grid-item.name-hero {
+        height: 66.6666vh;
+    }
+
+    /* switch positions in grid */
+    .grid-container {
+        display: grid;
+        grid-template-areas:
+            'hero hero hero orbit'
+            'hero hero hero moon'
+            'mars mars saturn saturn';
+    }
+
+    /* some style for the sub-page */
+    .text-block {
+        column-count: 4;
+    }
+}
+
+/* styles for large sized screens and upwards */
+@media screen and (min-width: 1600px) {
+
+    /* new height for all grid-items */
+    .grid-item {
+        height: 25vh;
+    }
+
+    /* new height for the hero grid-item */
+    .grid-item.name-hero {
+        height: 100vh;
+    }
+
+    /* switch positions in grid */
+    .grid-container {
+        display: grid;
+        grid-template-areas:
+            'hero hero hero orbit'
+            'hero hero hero moon'
+            'hero hero hero mars'
+            'hero hero hero saturn'
+    }
 }
